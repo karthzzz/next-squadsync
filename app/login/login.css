@@ -1,0 +1,283 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212121;
+  color: #fff;
+  font-family: monospace, serif;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: 23px;
+}
+
+.form {
+  width: 300px;
+  padding: 64px 15px 24px;
+  margin: 0 auto;
+}
+
+.control {
+  margin: 0 0 24px;
+}
+
+.control input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: monospace, serif;
+  letter-spacing: 0.05em;
+  font-size: 16px;
+}
+
+.control input:hover,
+.control input:focus {
+  outline: none;
+  border: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.block-cube {
+  position: relative;
+}
+
+.bg-top {
+  position: absolute;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,9,121,1) 37%, rgba(0,212,255,1) 94%);
+  bottom: 100%;
+  left: 5px;
+  right: -5px;
+  transform: skew(-45deg, 0);
+  margin: 0;
+}
+
+.bg-top .bg-inner {
+  bottom: 0;
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,9,121,1) 37%, rgba(0,212,255,1) 94%);
+}
+
+.bg-right {
+  position: absolute;
+  background: rgba(0,212,255,1);
+  top: -5px;
+  z-index: 0;
+  bottom: 5px;
+  width: 10px;
+  left: 100%;
+  transform: skew(0, -45deg);
+}
+
+.bg-right .bg-inner {
+  left: 0;
+}
+
+.bg .bg-inner {
+  transition: all 0.2s ease-in-out;
+}
+
+.bg-inner {
+  background: #212121;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+}
+
+.block-input input {
+  position: relative;
+  z-index: 2;
+}
+
+.block-input input:focus ~ .bg-right .bg-inner,
+.block-input input:focus ~ .bg-top .bg-inner,
+.block-input input:focus ~ .bg-inner .bg-inner {
+  top: 100%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.block-input .bg-top,
+.block-input .bg-right,
+.block-input .bg {
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.2s ease-in-out;
+}
+
+.block-input .bg-right,
+.block-input .bg-top .bg-inner {
+  transition: all 0.2s ease-in-out;
+}
+
+.block-input:focus .bg-top,
+.block-input:focus .bg-right,
+.block-input:focus .bg,
+.block-input:hover .bg-top,
+.block-input:hover .bg-right,
+.block-input:hover .bg {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.credits {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 15px 15px;
+  width: 100%;
+  z-index: 111;
+}
+
+.credits a {
+  opacity: 0.6;
+  color: #fff;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.credits a:hover {
+  opacity: 1;
+}
+
+.success-message {
+  display: none; /* Hidden by default */
+  background-color: rgba(0, 255, 0, 0.1); /* Semi-transparent background to match the theme */
+  color: #00ff00;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.success-message.show {
+  display: block; /* Show the success message */
+  opacity: 0.8;
+  transform: translateX(-50%) translateY(20px);
+}
+
+/* Position at the bottom */
+.success-message.bottom {
+  bottom: 10px;
+}
+
+/* Position at the middle */
+.success-message.middle {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Remove Chrome autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px #212121 inset !important; /* Ensures consistent styling */
+  -webkit-text-fill-color: #fff !important; /* Ensures text color is as expected */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input {
+  background-color: transparent;
+  color: #fff;
+  padding: 14px 16px;
+  border: 0;
+  font-family: monospace, serif;
+  letter-spacing: 0.05em;
+  font-size: 16px;
+}
+
+.error-message {
+  display: none; /* Hidden by default */
+  background-color: rgba(255, 0, 0, 0.1); /* Red background for error */
+  color: #ff0000;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.error-message.show {
+  display: block; /* Show the error message */
+  opacity: 0.8;
+  transform: translateX(-50%) translateY(20px);
+}
+
+/* Position at the bottom */
+.error-message.bottom {
+  bottom: 10px;
+}
+
+/* Position at the middle */
+.error-message.middle {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.user-data {
+  margin: 20px auto; /* Center horizontally */
+  padding: 20px; /* Increase padding for better spacing */
+  background-color: #333;
+  border-radius: 10px; /* Increase border radius for smoother corners */
+  color: #fff;
+  font-family: monospace, serif;
+  font-size: 14px;
+  max-width: 600px; /* Limit the maximum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  text-align: center; /* Center text */
+}
+
+.user-data h2 {
+  margin-top: 0;
+  font-size: 20px; /* Increase font size */
+  color: #00ff00;
+}
+
+.user-data pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left; /* Align pre text to the left */
+}

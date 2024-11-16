@@ -1,0 +1,186 @@
+/* Variables for colors and sizes */
+:root {
+  --secondary-color: #61dafb;
+  --background-color: #228b22;
+  --border-color: #ffffff;
+  --field-line-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --highlight-color: #ffd700;
+  --padding: 20px;
+  --border-radius: 12px;
+  --font-size-base: calc(10px + 2vmin);
+  --font-size-medium: calc(8px + 2vmin);
+  --font-size-small: calc(6px + 2vmin);
+}
+
+/* General App styles */
+.App {
+  text-align: center;
+  padding: var(--padding);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2c2c3a 100%);
+  transition: background 0.5s ease;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-logo:hover {
+  transform: rotate(360deg);
+}
+
+.App-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2c2c3a 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  color: white;
+  padding: var(--padding);
+  transition: background 0.5s ease;
+}
+
+.App-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 10px 0;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.App-link:hover {
+  color: var(--highlight-color);
+  text-decoration: underline;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Soccer field styling */
+.football-field {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: var(--padding);
+  background: linear-gradient(135deg, var(--background-color) 20%, #006400 80%);
+  border: 3px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 25px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.football-field:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px var(--shadow-color);
+}
+
+/* Adding field lines */
+.football-field::before,
+.football-field::after {
+  content: '';
+  position: absolute;
+  top: 100;
+  left: 200;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--field-line-color);
+  border-radius: var(--border-radius);
+  pointer-events: none;
+}
+
+/* Adjust the soccer lineup container for flex layout */
+.soccer-lineup-container {
+  display: flex; /* Use flexbox for side-by-side layout */
+  align-items: flex-start; /* Align items at the start */
+  justify-content: space-between; /* Add space between items */
+  gap: 20px; /* Optional: add space between soccer lineup and player info */
+}
+
+/* Player information box */
+.player-info {
+  margin: 0; /* Remove top margin to align better */
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  background-color: rgba(34, 34, 34, 0.85); /* Darker background for dark theme */
+  color: #f0f0f0; /* Lighter text color for contrast */
+  border-radius: var(--border-radius);
+  width: 220px; /* Maintain a fixed width */
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-info h3 {
+  margin-top: 0;
+  color: var(--highlight-color); /* Highlight color for headings */
+}
+
+.player-info:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Darker shadow on hover */
+}
+
+/* Player styling */
+.player {
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.player:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+  background-color: rgba(255, 255, 0, 0.3); /* Highlight background */
+  border: 2px solid var(--highlight-color); /* Border color change */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: var(--font-size-medium);
+  }
+
+  .App-logo {
+    height: 30vmin;
+  }
+
+  .football-field {
+    max-width: 700px;
+  }
+
+  .player-info {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    font-size: var(--font-size-small);
+  }
+
+  .App-logo {
+    height: 20vmin;
+  }
+
+  .football-field {
+    max-width: 500px;
+  }
+
+  .player-info {
+    width: 150px;
+  }
+}
